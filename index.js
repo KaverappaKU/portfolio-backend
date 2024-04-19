@@ -19,7 +19,6 @@ app.use(express.json());
 // Route for store
 app.get("/projects", async (request, response) => {
   let storeData = await getProjects();
-  console.log(storeData);
   response.json(storeData);
 });
 
@@ -30,8 +29,6 @@ async function getProjects() {
   let res = await results.toArray();
   return res;
 }
-
-getProjects();
 
 app.listen(port, () => {
   console.log(`listening on http://localhost:${port}`);
