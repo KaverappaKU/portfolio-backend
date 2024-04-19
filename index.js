@@ -6,6 +6,7 @@ const axios = require("axios");
 const dotenv = require("dotenv");
 const app = express();
 const port = process.env.port || "8888";
+const cors = require("cors");
 
 dotenv.config();
 
@@ -14,6 +15,11 @@ const dbUrl = process.env.DATABASE_URL;
 const client = new MongoClient(dbUrl);
 
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 
 // Route for store
